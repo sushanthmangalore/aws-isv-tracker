@@ -1,0 +1,15 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-awsisvtracker-dev-80201-authRole",
+      "UnauthRoleArn": "arn:aws:iam::867470678740:role/amplify-awsisvtracker-dev-80201-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::867470678740:role/amplify-awsisvtracker-dev-80201-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-awsisvtracker-dev-80201-deployment",
+      "UnauthRoleName": "amplify-awsisvtracker-dev-80201-unauthRole",
+      "StackName": "amplify-awsisvtracker-dev-80201",
+      "StackId": "arn:aws:cloudformation:us-east-1:867470678740:stack/amplify-awsisvtracker-dev-80201/2f1d2c20-ebe2-11ec-800a-1215c9e41705",
+      "AmplifyAppId": "d2w789fcd0kse6"
+    }
+  }
+}

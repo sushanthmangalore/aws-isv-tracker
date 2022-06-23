@@ -24,6 +24,11 @@ const Input = () => {
     //     getLicenses();
     // })
 
+    // place holder for delete function to be added
+    // const deleteEntry = () => {
+
+    // }
+
     const licenseSeed = [
         {
             id: 1,
@@ -94,6 +99,7 @@ const Input = () => {
                     })}
                 </tbody>
             </Table>
+            <Button variant="dark" size="lg" className="float-right">Delete</Button>
         </div>
     );
 };

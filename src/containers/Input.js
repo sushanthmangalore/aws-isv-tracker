@@ -7,47 +7,9 @@ import { License } from '../models';
 
 const Input = () => {
 
-    const licenseSeed = [
-        {
-            id: 1,
-            name: "DataDog",
-            category: "Monitoring",
-            purchaseType: "MP Private Offer",
-            licenseTerms: "1 year, 50 users",
-            renewalDate: "7/31/2022",
-            comments: "",
-        },
-        {
-            id: 2,
-            name: "Trend Micro",
-            category: "Security",
-            purchaseType: "MP Public Offer",
-            licenseTerms: "1 year",
-            renewalDate: "8/31/2022",
-            comments: "Switch to private offer",
-        },
-        {
-            id: 3,
-            name: "F5",
-            category: "Networking",
-            purchaseType: "Direct Purchase",
-            licenseTerms: "2 years",
-            renewalDate: "1/31/2023",
-            comments: "Discuss with AWS",
-        },
-        {
-            id: 4,
-            name: "Databricks",
-            category: "Analytics",
-            purchaseType: "MP Private Offer",
-            licenseTerms: "$1.00 / unit",
-            renewalDate: "7/31/2022",
-            comments: "Renew Offer",
-        },
-    ]
 
     let [licenses, setLicenses] = useState([]);
-    const [checked, setChecked] = useState(false);
+    const [licensesToDelete, setLicensesToDelete] = useState([]);
 
 
     const fetchContracts = async () => {
@@ -59,12 +21,32 @@ const Input = () => {
         fetchContracts();
     }, [])
 
-    // place holder for delete function to be added
-    const deleteEntry = (e) => {
-        e.preventDefault();
-        console.log("Deleting entry number ", e.currentTarget.value);
+    const deleteEntry = async (licenseId) => {
+        try {
+            const modelToDelete = await DataStore.query(License, licenseId);
+            DataStore.delete(modelToDelete);
+        } catch (error) {
+            console.error(error)
+        }
     }
 
+    const deleteCheckedEntries = () => {
+        licensesToDelete.forEach(licenseId => 
+           deleteEntry(licenseId)
+        )
+        const newLicenseArr = licenses.filter(license => !licensesToDelete.includes(license.id));
+        setLicenses(newLicenseArr);
+    }
+
+    const addLicenseToDelete = (licenseId) => {
+        setLicensesToDelete([...licensesToDelete, licenseId]);
+        console.log("licenses that will be deleted", licensesToDelete)
+    }
+
+    const removeLicenseToDelete = (licenseId) => {
+        const newLicensesToDelete = licensesToDelete.filter(currLicenseId => licenseId !== currLicenseId);
+        setLicensesToDelete(newLicensesToDelete);
+    }
 
     return (
         <div>
@@ -85,7 +67,7 @@ const Input = () => {
                         console.log(license.id % 2 === 0)
                         return(
                             <tr key={license.id} style={{backgroundColor: i % 2 !== 0 ? "#fbb64e" : "#ffffff"}}>
-                                <td><TableButton licenseId={license.id}/></td>
+                                <td><TableButton licenseId={license.id} addLicenseToDelete={addLicenseToDelete} removeLicenseToDelete={removeLicenseToDelete}/></td>
                                 <td>{license.name}</td>
                                 <td>{license.category}</td>
                                 <td>{license.purchaseType}</td>
@@ -101,7 +83,7 @@ const Input = () => {
             variant="dark" 
             size="lg" 
             className="float-right"
-            >Delete</Button>
+            onClick={deleteCheckedEntries}>Delete</Button>
         </div>
     );
 };

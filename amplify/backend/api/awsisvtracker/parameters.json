@@ -1,0 +1,5 @@
+{
+  "AppSyncApiName": "awsisvtracker",
+  "DynamoDBBillingMode": "PAY_PER_REQUEST",
+  "DynamoDBEnableServerSideEncryption": false
+}

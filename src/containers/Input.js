@@ -1,33 +1,11 @@
 import React, { useState, useCallback, useEffect } from "react";
 import PropTypes from 'prop-types';
 import {Table, Button, ToggleButton, ButtonGroup, ToggleButtonGroup} from 'react-bootstrap';
-import axios from "axios";
-import { USER_API } from '../api';
 import TableButton from './helperComponents/TableButtons';
+import { DataStore } from '@aws-amplify/datastore';
+import { License } from '../models';
 
 const Input = () => {
-
-    const [licenses, setLicenses] = useState(null);
-    const [checked, setChecked] = useState(false);
-
-    // useEffect(() => {
-    //     async function getLicenses ()  {
-    //         try{
-    //             const response = await axios.get(`${USER_API}/api/users/:id`);
-    //             const json = response.json();
-    //             setLicenses(json.data);
-    //         } 
-    //         catch{
-    //             console.log("there is an error in the useEffect for dashboard props")
-    //         }
-    //     }
-    //     getLicenses();
-    // })
-
-    // place holder for delete function to be added
-    // const deleteEntry = () => {
-
-    // }
 
     const licenseSeed = [
         {
@@ -68,6 +46,26 @@ const Input = () => {
         },
     ]
 
+    let [licenses, setLicenses] = useState([]);
+    const [checked, setChecked] = useState(false);
+
+
+    const fetchContracts = async () => {
+        const models = await DataStore.query(License);
+        setLicenses(models)
+    }
+
+    useEffect(() => {
+        fetchContracts();
+    }, [])
+
+    // place holder for delete function to be added
+    const deleteEntry = (e) => {
+        e.preventDefault();
+        console.log("Deleting entry number ", e.currentTarget.value);
+    }
+
+
     return (
         <div>
             <Table hover>
@@ -83,10 +81,10 @@ const Input = () => {
                      </tr>
                 </thead>
                 <tbody>
-                    {licenseSeed.map((license) => {
+                    {licenses.map((license, i) => {
                         console.log(license.id % 2 === 0)
                         return(
-                            <tr key={license.id} style={{backgroundColor: license.id % 2 === 0 ? "#fbb64e" : "#ffffff"}}>
+                            <tr key={license.id} style={{backgroundColor: i % 2 !== 0 ? "#fbb64e" : "#ffffff"}}>
                                 <td><TableButton licenseId={license.id}/></td>
                                 <td>{license.name}</td>
                                 <td>{license.category}</td>
@@ -99,7 +97,11 @@ const Input = () => {
                     })}
                 </tbody>
             </Table>
-            <Button variant="dark" size="lg" className="float-right">Delete</Button>
+            <Button 
+            variant="dark" 
+            size="lg" 
+            className="float-right"
+            >Delete</Button>
         </div>
     );
 };

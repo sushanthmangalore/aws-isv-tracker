@@ -10,6 +10,12 @@
       "StackName": "amplify-awsisvtracker-dev-80201",
       "StackId": "arn:aws:cloudformation:us-east-1:867470678740:stack/amplify-awsisvtracker-dev-80201/2f1d2c20-ebe2-11ec-800a-1215c9e41705",
       "AmplifyAppId": "d2w789fcd0kse6"
+    },
+    "categories": {
+      "auth": {
+        "awsisvtrackerfdf3c457": {},
+        "awsisvtrackere235055d": {}
+      }
     }
   }
 }

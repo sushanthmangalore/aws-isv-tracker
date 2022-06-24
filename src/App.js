@@ -3,6 +3,9 @@ import './App.css';
 import { Nav, Navbar, NavItem, Container } from 'react-bootstrap';
 import { LinkContainer } from "react-router-bootstrap";
 import Routes from "./Routes";
+import { Amplify, API, graphqlOperation } from 'aws-amplify';
+import awsconfig from './aws-exports';
+Amplify.configure(awsconfig);
 
 
 function App() {

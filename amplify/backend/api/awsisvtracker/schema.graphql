@@ -1,0 +1,10 @@
+type License @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  name: String!
+  category: String!
+  purchaseType: String!
+  licenseTerms: String!
+  renewalDate: AWSDate!
+  comments: String
+}
+ 

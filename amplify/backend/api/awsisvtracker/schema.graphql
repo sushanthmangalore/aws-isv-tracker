@@ -6,5 +6,4 @@ type License @model @auth(rules: [{allow: public}]) {
   licenseTerms: String!
   renewalDate: AWSDate!
   comments: String
-}
- 
+} 

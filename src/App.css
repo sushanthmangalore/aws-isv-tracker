@@ -57,6 +57,11 @@ body {
   text: white;
 }
 
+.signout {
+  color: orange !important;
+  font-size: 80%;
+}
+
 .navbar-nav {
   font-size: 80%
 }

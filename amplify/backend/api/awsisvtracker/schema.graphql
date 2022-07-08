@@ -1,9 +1,16 @@
+enum PurchaseTypeEnum {
+  MARKETPLACE_PUBLIC
+  MARKETPLACE_PRIVATE
+  DIRECT_VENDOR
+}
+
 type License @model @auth(rules: [{allow: public}]) {
   id: ID!
   name: String!
   category: String!
-  purchaseType: String!
+  purchaseType: PurchaseTypeEnum!
   licenseTerms: String!
   renewalDate: AWSDate!
   comments: String
-} 
+}
+ 

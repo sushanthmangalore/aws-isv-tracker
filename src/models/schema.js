@@ -27,7 +27,9 @@ export const schema = {
                 "purchaseType": {
                     "name": "purchaseType",
                     "isArray": false,
-                    "type": "String",
+                    "type": {
+                        "enum": "PurchaseTypeEnum"
+                    },
                     "isRequired": true,
                     "attributes": []
                 },
@@ -95,7 +97,16 @@ export const schema = {
             ]
         }
     },
-    "enums": {},
+    "enums": {
+        "PurchaseTypeEnum": {
+            "name": "PurchaseTypeEnum",
+            "values": [
+                "MARKETPLACE_PUBLIC",
+                "MARKETPLACE_PRIVATE",
+                "DIRECT_VENDOR"
+            ]
+        }
+    },
     "nonModels": {},
-    "version": "d58ac6b547cf357bdf4648bf087f0735"
+    "version": "3bb71db52cbb78781e770050e0c4eb3d"
 };

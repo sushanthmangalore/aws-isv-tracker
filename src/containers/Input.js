@@ -1,9 +1,6 @@
 import React, { useState, useCallback, useEffect } from "react";
 import PropTypes from 'prop-types';
-import { Button, ToggleButton, ButtonGroup, ToggleButtonGroup} from 'react-bootstrap';
-import TableButton from './helperComponents/TableButtons';
-import { DataStore } from '@aws-amplify/datastore';
-import { License } from '../models';
+import { Button, Modal} from 'react-bootstrap';
 import { listLicenses } from "../graphql/queries";
 import { deleteLicense } from "../graphql/mutations";
 import { API, input } from "aws-amplify";
@@ -19,6 +16,7 @@ const Input = () => {
 
     const [licenses, setLicenses] = useState([]);
     const [licensesToDelete, setLicensesToDelete] = useState([]);
+    const [show, setShow] = useState(false);
 
 
     const fetchContracts = async () => {
@@ -46,7 +44,11 @@ const Input = () => {
         const newLicenseArr = licenses.filter(license => !licensesToDelete.includes(license.id));
         setLicenses(newLicenseArr);
         setLicensesToDelete([]);
+        setShow(false);
     }
+
+    const handleShow = () => setShow(true);
+    const handleClose = () => setShow(false);
 
     const handleSelect = (row, isSelect) => {
         if(isSelect) {
@@ -55,17 +57,6 @@ const Input = () => {
         } else {
             setLicensesToDelete(licensesToDelete.filter(id => id !== row.id));
             console.log("licenses after unselecting", licensesToDelete);
-        }
-    }
-
-    const handleSelectAll = (isSelect, rows, e) => {
-        if(isSelect) {
-            setLicensesToDelete(licenses);
-            console.log('all rows selected', licensesToDelete);
-        }
-        else{
-            setLicensesToDelete([]);
-            console.log('unselect all rows', licensesToDelete)
         }
     }
 
@@ -101,59 +92,59 @@ const Input = () => {
         clickToSelect: true,
         selected: licensesToDelete,
         onSelect: handleSelect,
-        onSelectAll: handleSelectAll
+        hideSelectAll: true
       }
 
-      const rowStyle = (row, rowIndex) => {
-        if(rowIndex % 2 !== 0){
-            return {
-                backgroundColor: "#fbb64e"
-            }
+    const rowStyle = (row, rowIndex) => {
+    if(rowIndex % 2 !== 0){
+        return {
+            backgroundColor: "#fbb64e"
         }
-        else{
-            return {
-                backgroundColor: "#ffffff"
-            }
+    }
+    else{
+        return {
+            backgroundColor: "#ffffff"
         }
-      }
+    }
+    }
 
-      const pageButtonRenderer = ({
-        page,
-        active,
-        disable,
-        title,
-        onPageChange
-      }) => {
-        const handleClick = (e) => {
-          e.preventDefault();
-          onPageChange(page);
-        };
-        const activeStyle = {};
-        if (active) {
-          activeStyle.backgroundColor = '#343a40';
-          activeStyle.color = 'white';
-          activeStyle.borderColor = '#343a40';
-        } else {
-          activeStyle.backgroundColor = 'white';
-          activeStyle.color = '#343a40';
-        }
-        if (typeof page === 'string') {
-          activeStyle.backgroundColor = 'white';
-          activeStyle.color = '#343a40';
-        }
-        return (
-          <li className="page-item" key={page}>
-            <Button className = 'btn-dark' onClick={ handleClick } style={ activeStyle }>{ page }</Button>
-          </li>
-        );
-      };
+    const pageButtonRenderer = ({
+    page,
+    active,
+    disable,
+    title,
+    onPageChange
+    }) => {
+    const handleClick = (e) => {
+        e.preventDefault();
+        onPageChange(page);
+    };
+    const activeStyle = {};
+    if (active) {
+        activeStyle.backgroundColor = '#343a40';
+        activeStyle.color = 'white';
+        activeStyle.borderColor = '#343a40';
+    } else {
+        activeStyle.backgroundColor = 'white';
+        activeStyle.color = '#343a40';
+    }
+    if (typeof page === 'string') {
+        activeStyle.backgroundColor = 'white';
+        activeStyle.color = '#343a40';
+    }
+    return (
+        <li className="page-item" key={page}>
+        <Button className = 'btn-dark' onClick={ handleClick } style={ activeStyle }>{ page }</Button>
+        </li>
+    );
+    };
       
-      const options = {
-        sizePerPage: 8,
-        hideSizePerPage: true,
-        pageButtonRenderer
-      }
-      
+    const options = {
+    sizePerPage: 8,
+    hideSizePerPage: true,
+    pageButtonRenderer
+    }
+
     return (
         <div>
             <BootstrapTable 
@@ -168,11 +159,32 @@ const Input = () => {
             bordered={false}
             />
 
-            <Button 
+            {licensesToDelete.length > 0 ? <Button 
             variant="dark" 
             size="lg" 
             className="float-right"
-            onClick={deleteCheckedEntries}>Delete</Button>
+            onClick={handleShow}
+            active >Delete</Button> : <Button 
+            variant="dark" 
+            size="lg" 
+            className="float-right"
+            onClick={handleShow}
+            disabled >Delete</Button>}
+
+            <Modal show={show} onHide={handleClose}>
+                <Modal.Header>
+                    <Modal.Title style={{fontSize: '130%', textAlign: 'center', fontWeight: 'bold'}}>Are you sure you want to delete these entries?</Modal.Title>
+                </Modal.Header>
+                <Modal.Body style={{textAlign: 'center'}}>If you are sure you want to delete these entries, push the delete button below, otherwise, click cancel.</Modal.Body>
+                <Modal.Footer>
+                    <Button variant="warning" onClick={handleClose}>
+                        Cancel
+                    </Button>
+                    <Button variant="dark" onClick={deleteCheckedEntries}>
+                        Delete
+                    </Button>
+                </Modal.Footer>
+            </Modal>
         </div>
     );
 };

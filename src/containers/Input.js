@@ -33,7 +33,7 @@ const Input = () => {
 
     const deleteEntry = async (licenseId) => {
         try {
-            const modelToDelete = await API.graphql({ query: deleteLicense, variables: {input: {id: licenseId, _version: 1}}});
+            const modelToDelete = await API.graphql({ query: deleteLicense, variables: {input: {id: licenseId}}});
         } catch (error) {
             console.error(error)
         }
@@ -58,7 +58,7 @@ const Input = () => {
         }
     }
 
-    const handleSelectAll = (rows, isSelect, e) => {
+    const handleSelectAll = (isSelect, rows, e) => {
         if(isSelect) {
             setLicensesToDelete(licenses);
             console.log('all rows selected', licensesToDelete);
@@ -142,7 +142,7 @@ const Input = () => {
           activeStyle.color = '#343a40';
         }
         return (
-          <li className="page-item">
+          <li className="page-item" key={page}>
             <Button className = 'btn-dark' onClick={ handleClick } style={ activeStyle }>{ page }</Button>
           </li>
         );

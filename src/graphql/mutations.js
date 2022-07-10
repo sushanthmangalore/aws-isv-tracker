@@ -16,9 +16,6 @@ export const createLicense = /* GraphQL */ `
       comments
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
     }
   }
 `;
@@ -37,9 +34,6 @@ export const updateLicense = /* GraphQL */ `
       comments
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
     }
   }
 `;
@@ -58,9 +52,6 @@ export const deleteLicense = /* GraphQL */ `
       comments
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
     }
   }
 `;

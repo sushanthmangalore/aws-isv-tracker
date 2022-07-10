@@ -270,3 +270,7 @@ div > a > small {
 .nav-item{
   color: white
 }
+
+.column-header{
+  background-color: #e6e7ec;
+}

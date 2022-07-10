@@ -3,22 +3,17 @@
   "serviceConfiguration": {
     "apiName": "awsisvtracker",
     "serviceName": "AppSync",
-    "gqlSchemaPath": "/Users/mangalos/aws-isv-tracker/amplify/backend/api/awsisvtracker/schema.graphql",
+    "gqlSchemaPath": "/Users/micorman/Desktop/aws-isv-tracker/amplify/backend/api/awsisvtracker/schema.graphql",
     "defaultAuthType": {
       "mode": "API_KEY",
-      "expirationTime": 365,
-      "apiKeyExpirationDate": "2023-06-27T00:32:31.268Z",
-      "keyDescription": "api key description"
+      "keyDescription": "api key description",
+      "expirationTime": 30
     },
     "additionalAuthTypes": [
       {
         "mode": "AWS_IAM"
       }
     ],
-    "conflictResolution": {
-      "defaultResolutionStrategy": {
-        "type": "AUTOMERGE"
-      }
-    }
+    "conflictResolution": {}
   }
 }

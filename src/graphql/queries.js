@@ -13,9 +13,6 @@ export const getLicense = /* GraphQL */ `
       comments
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
     }
   }
 `;
@@ -36,44 +33,8 @@ export const listLicenses = /* GraphQL */ `
         comments
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
       }
       nextToken
-      startedAt
-    }
-  }
-`;
-export const syncLicenses = /* GraphQL */ `
-  query SyncLicenses(
-    $filter: ModelLicenseFilterInput
-    $limit: Int
-    $nextToken: String
-    $lastSync: AWSTimestamp
-  ) {
-    syncLicenses(
-      filter: $filter
-      limit: $limit
-      nextToken: $nextToken
-      lastSync: $lastSync
-    ) {
-      items {
-        id
-        name
-        category
-        purchaseType
-        licenseTerms
-        renewalDate
-        comments
-        createdAt
-        updatedAt
-        _version
-        _deleted
-        _lastChangedAt
-      }
-      nextToken
-      startedAt
     }
   }
 `;

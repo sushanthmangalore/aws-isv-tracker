@@ -46,9 +46,9 @@ function App() {
                     <NavItem>EXPORT ASSETS</NavItem>
                   </Nav.Link>
                 </LinkContainer>
-                <LinkContainer to="/analysis">
+                <LinkContainer to="/addassets">
                   <Nav.Link>
-                    <NavItem>ANALYSIS</NavItem>
+                    <NavItem>ADD ASSETS</NavItem>
                   </Nav.Link>
                 </LinkContainer>
               </Nav>

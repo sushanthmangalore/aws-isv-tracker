@@ -3,7 +3,7 @@ import { Route, Switch, Redirect } from "react-router-dom";
 import Uploader from "./containers/Uploader";
 import Input from "./containers/Input";
 import Output from "./containers/Output";
-import Analysis from "./containers/Analysis";
+import AddAssests from "./containers/AddAssests";
 
 export default function Routes() {
   return (
@@ -14,7 +14,7 @@ export default function Routes() {
       <Route path="/import" exact component={Uploader} />
       <Route path="/dashboard" component={Input} />
       <Route path="/export" exact component={Output} />
-      <Route path="/analysis" exact component={Analysis} />
+      <Route path="/addassets" exact component={AddAssests} />
     </Switch>
   );
 }

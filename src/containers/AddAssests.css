@@ -1,0 +1,51 @@
+.AddAsessts{
+  position: relative;
+  text-align: center;
+} 
+.entire{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-content: space-around;
+  justify-content: space-evenly;
+}
+
+ input[name = "name"] {
+  width: 101%;
+  box-sizing: border-box;
+}
+
+input[name = "category"] {
+  width: 90%;
+  box-sizing: border-box;
+}
+
+input[name = "renewalDate"] {
+  width: 99%;
+  box-sizing: border-box;
+}
+
+.purchase {
+  width: 100%;
+  padding: 12px 10px;
+  height: 50px;
+  margin: 2px 1%;  
+  box-sizing: border-box;
+}  
+
+input[name = "licenseTerms"] {
+  width: 90%;
+  height: 120px;
+  box-sizing: border-box;
+}
+
+input[name = "comments"] {
+  width: 90%;
+  height: 120px;
+  box-sizing: border-box;
+} 
+ 
+input[type= "Submit"] {
+  width: 20%;
+  box-sizing: border-box;
+}    

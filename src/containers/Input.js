@@ -5,8 +5,11 @@ import { listLicenses } from "../graphql/queries";
 import { deleteLicense } from "../graphql/mutations";
 import { API, input } from "aws-amplify";
 import BootstrapTable from 'react-bootstrap-table-next';
+import ToolkitProvider, { CSVExport } from  'react-bootstrap-table2-toolkit/dist/react-bootstrap-table2-toolkit';
+// import 'react-bootstrap-table2-toolkit/dist/react-bootstrap-table2-toolkit.min.css';
 import 'react-bootstrap-table-next/dist/react-bootstrap-table2.min.css';
 import paginationFactory from 'react-bootstrap-table2-paginator';
+
 // import 'react-bootstrap-table2-paginator/dist/react-bootstrap-table2-paginator.min.css';
 
 
@@ -34,7 +37,8 @@ const Input = () => {
             const modelToDelete = await API.graphql({ query: deleteLicense, variables: {input: {id: licenseId}}});
         } catch (error) {
             console.error(error)
-        }
+
+           }
     }
 
     const deleteCheckedEntries = () => {
@@ -145,9 +149,11 @@ const Input = () => {
     pageButtonRenderer
     }
 
+    const { ExportCSVButton } = CSVExport;
+
     return (
         <div>
-            <BootstrapTable 
+            {/* <BootstrapTable 
             keyField="id" 
             data = {licenses} 
             columns = {columns} 
@@ -157,7 +163,34 @@ const Input = () => {
             bootstrap4={true}
             pagination={paginationFactory(options)}
             bordered={false}
-            />
+            /> */}
+
+            <ToolkitProvider
+                // ExportCSVButton={ {
+                //      fileName: 'custom.csv',
+                //      separator: '|',
+                //      ignoreHeader: true,
+                //      noAutoBOM: false
+                //    } }
+                exportCSV 
+                keyField="id" 
+                data = {licenses} 
+                columns = {columns} 
+                rowStyle = {rowStyle} 
+                selectRow={ selectRow } 
+                headerClasses='column-header'
+                bootstrap4={true}
+                pagination={paginationFactory(options)}
+                bordered={false}
+            >
+                        {props =>
+                        <div>
+                        <ExportCSVButton { ...props.csvProps }> Export CSV!!</ExportCSVButton >
+                        <hr/>
+                        <BootstrapTable {...props.baseProps} />
+                        </div>}
+                    
+            </ToolkitProvider>
 
             {licensesToDelete.length > 0 ? <Button 
             variant="dark" 
@@ -187,7 +220,10 @@ const Input = () => {
             </Modal>
         </div>
     );
+      
+    
 };
+
 
 Input.propTypes = {
     licenses: PropTypes.array

@@ -163,7 +163,7 @@ const Input = () => {
                     bordered={false}/>
                     <hr/>
                     <Button className="float-right" style={{fontSize: '35%', color: 'white'}} variant = "grey"> 
-                      <ExportCSVButton { ...props.csvProps }> Export</ExportCSVButton > 
+                    <ExportCSVButton { ...props.csvProps }> Export</ExportCSVButton > 
                     </Button>
                     </div>}         
             </ToolkitProvider>

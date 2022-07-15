@@ -14411,6 +14411,7 @@ __metadata:
   checksum: 6efa443a8c4dcf3a9f0d37ee33541644ebc0cad2aa00f0f966ce80fa548ae1fe860903f6bbf04506201787c21f11daed760c72edf12c42a719727328976d635a
   languageName: node
   linkType: hard
+  
 
 "postcss-pseudo-class-any-link@npm:^7.1.4":
   version: 7.1.4
@@ -15117,7 +15118,7 @@ __metadata:
     prop-types: ^15.5.10
   peerDependencies:
     react: ">=0.14.0"
-    
+
   checksum: d1a153fe2a03b9c2c1c92ba1efad80d84d55e75ae4824ed10681210421d25cb94d2fc32191ea933884d9c5ce71bdb6c19b6c32e262216912de71f4d99de68c12
   languageName: node
   linkType: hard

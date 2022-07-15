@@ -41,11 +41,6 @@ function App() {
                     <NavItem>DASHBOARD</NavItem>
                   </Nav.Link>
                 </LinkContainer>
-                {/* <LinkContainer to="/export">
-                  <Nav.Link>
-                    <NavItem>EXPORT ASSETS</NavItem>
-                  </Nav.Link>
-                </LinkContainer> */}
                 <LinkContainer to="/addassets">
                   <Nav.Link>
                     <NavItem>ADD ASSETS</NavItem>

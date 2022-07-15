@@ -15117,7 +15117,7 @@ __metadata:
     prop-types: ^15.5.10
   peerDependencies:
     react: ">=0.14.0"
-    react-router-dom: ">=4.0.0"
+    
   checksum: d1a153fe2a03b9c2c1c92ba1efad80d84d55e75ae4824ed10681210421d25cb94d2fc32191ea933884d9c5ce71bdb6c19b6c32e262216912de71f4d99de68c12
   languageName: node
   linkType: hard

@@ -1,0 +1,10 @@
+{
+  "resourceName": "s3awsisvtrackerstoragee049a5ad",
+  "bucketName": "awsisvtracker-storage-e049a5ad",
+  "policyUUID": "e264c469",
+  "storageAccess": "auth",
+  "guestAccess": [],
+  "authAccess": [
+    "CREATE_AND_UPDATE"
+  ]
+}

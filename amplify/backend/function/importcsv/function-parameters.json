@@ -1,0 +1,19 @@
+{
+  "permissions": {
+    "api": {
+      "awsisvtracker": [
+        "Mutation"
+      ]
+    },
+    "storage": {
+      "s3awsisvtrackerstoragee049a5ad": [
+        "create",
+        "read"
+      ],
+      "License:@model(appsync)": [
+        "create"
+      ]
+    }
+  },
+  "lambdaLayers": []
+}

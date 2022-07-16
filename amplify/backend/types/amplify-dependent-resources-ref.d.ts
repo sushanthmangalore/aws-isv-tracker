@@ -16,5 +16,19 @@ export type AmplifyDependentResourcesAttributes = {
             "AppClientIDWeb": "string",
             "AppClientID": "string"
         }
+    },
+    "function": {
+        "importcsv": {
+            "Name": "string",
+            "Arn": "string",
+            "Region": "string",
+            "LambdaExecutionRole": "string"
+        }
+    },
+    "storage": {
+        "s3awsisvtrackerstoragee049a5ad": {
+            "BucketName": "string",
+            "Region": "string"
+        }
     }
 }

@@ -17,12 +17,6 @@
         "awsisvtrackere235055d": {},
         "awsisvtracker40f44a10": {},
         "awsisvtrackerfe18b619": {}
-      },
-      "function": {
-        "importcsv": {
-          "deploymentBucketName": "amplify-awsisvtracker-dev-80201-deployment",
-          "s3Key": "amplify-builds/importcsv-783633436a3971764635-build.zip"
-        }
       }
     }
   }

@@ -26,7 +26,7 @@ export type AmplifyDependentResourcesAttributes = {
         }
     },
     "storage": {
-        "s3awsisvtrackerstoragee049a5ad": {
+        "awsisvtracker1729a16e": {
             "BucketName": "string",
             "Region": "string"
         }

@@ -28,9 +28,9 @@
       "Type": "String",
       "Default": "apiawsisvtrackerGraphQLAPIKeyOutput"
     },
-    "storages3awsisvtrackerstoragee049a5adBucketName": {
+    "storageawsisvtracker1729a16eBucketName": {
       "Type": "String",
-      "Default": "storages3awsisvtrackerstoragee049a5adBucketName"
+      "Default": "storageawsisvtracker1729a16eBucketName"
     }
   },
   "Conditions": {
@@ -122,7 +122,7 @@
               ]
             },
             "STORAGE_S3AWSISVTRACKERSTORAGEE049A5AD_BUCKETNAME": {
-              "Ref": "storages3awsisvtrackerstoragee049a5adBucketName"
+              "Ref": "storageawsisvtracker1729a16eBucketName"
             }
           }
         },
@@ -272,7 +272,7 @@
                     [
                       "arn:aws:s3:::",
                       {
-                        "Ref": "storages3awsisvtrackerstoragee049a5adBucketName"
+                        "Ref": "storageawsisvtracker1729a16eBucketName"
                       }
                     ]
                   ]
@@ -292,7 +292,7 @@
                     [
                       "arn:aws:s3:::",
                       {
-                        "Ref": "storages3awsisvtrackerstoragee049a5adBucketName"
+                        "Ref": "storageawsisvtracker1729a16eBucketName"
                       },
                       "/*"
                     ]

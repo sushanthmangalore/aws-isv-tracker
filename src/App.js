@@ -41,14 +41,9 @@ function App() {
                     <NavItem>DASHBOARD</NavItem>
                   </Nav.Link>
                 </LinkContainer>
-                <LinkContainer to="/export">
+                <LinkContainer to="/addassets">
                   <Nav.Link>
-                    <NavItem>EXPORT ASSETS</NavItem>
-                  </Nav.Link>
-                </LinkContainer>
-                <LinkContainer to="/analysis">
-                  <Nav.Link>
-                    <NavItem>ANALYSIS</NavItem>
+                    <NavItem>ADD ASSETS</NavItem>
                   </Nav.Link>
                 </LinkContainer>
               </Nav>

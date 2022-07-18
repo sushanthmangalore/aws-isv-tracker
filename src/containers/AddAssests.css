@@ -1,0 +1,28 @@
+.AddAsessts{
+  position: relative;
+  text-align: center;
+} 
+.entire{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-content: space-around;
+  justify-content: space-evenly;
+}
+
+@media (max-width: 991px)
+{    
+    .form-group .col-sm-12:first-child{margin-bottom:15px;} 
+}   
+
+input[name= "licenseTerms"] {
+  width: 100%;
+  height: 100px;
+  box-sizing: border-box;
+}   
+
+input[name= "comments"] {
+  width: 100%;
+  height: 100px;
+  box-sizing: border-box;
+}   

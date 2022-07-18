@@ -74,8 +74,9 @@
     }
   },
   "storage": {
-    "s3awsisvtrackerstoragee049a5ad": {
+    "awsisvtracker1729a16e": {
       "service": "S3",
+      "serviceType": "imported",
       "providerPlugin": "awscloudformation",
       "dependsOn": []
     }
